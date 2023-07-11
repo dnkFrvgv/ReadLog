@@ -9,7 +9,7 @@ namespace api.Models
   {
     public int Id { get; set; }
     public string Title { get; set; }
-    public ICollection<Author> Authors { get; set; }
+    public ICollection<BookAuthor> Authors { get; set; }
     public int NumberOfPages { get; set; }
     public int NumberOfPagesRead { get; set; } = 0;
     public decimal PercentageRead {get;set;} = 0;
