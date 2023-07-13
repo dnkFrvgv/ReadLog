@@ -1,4 +1,6 @@
+using api.Core.Interfaces;
 using api.Data;
+using api.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,9 @@ builder.Services.AddDbContext<DataContext>(opt => {
 	opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 
 });
+
+builder.Services.AddTransient<IAuthorRepository, AuthorRepository>();
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 
