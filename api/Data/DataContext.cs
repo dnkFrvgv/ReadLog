@@ -16,9 +16,11 @@ namespace api.Data
       modelBuilder.Entity<BookAuthor>().HasOne(ba => ba.Book).WithMany(ba => ba.Authors).HasForeignKey(ba => ba.BookId);
       modelBuilder.Entity<BookAuthor>().HasOne(ba => ba.Author).WithMany(ba => ba.Books).HasForeignKey(ba => ba.AuthorId);
 
-      modelBuilder.Entity<Book>().HasMany(b => b.Logs).WithOne(l => l.Book).HasForeignKey(l => l.BookId);
+      modelBuilder.Entity<Book>().HasMany(b => b.Reads).WithOne(l => l.Book).HasForeignKey(l => l.BookId);
 
-      modelBuilder.Entity<Book>().HasOne(b => b.Review).WithOne(r => r.Book).HasForeignKey<Review>(r => r.BookId);
+      modelBuilder.Entity<Read>().HasMany(b => b.Logs).WithOne(l => l.Read).HasForeignKey(l => l.ReadId);
+
+      modelBuilder.Entity<Read>().HasOne(b => b.Review).WithOne(r => r.Read).HasForeignKey<Review>(r => r.ReadId);
     }
 
     DbSet<BookAuthor> BookAuthors;
