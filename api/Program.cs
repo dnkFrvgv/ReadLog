@@ -1,6 +1,8 @@
+using api.Authors;
 using api.Core.Interfaces;
 using api.Data;
 using api.Repositories;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +20,7 @@ builder.Services.AddDbContext<DataContext>(opt => {
 
 builder.Services.AddTransient<IAuthorRepository, AuthorRepository>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+builder.Services.AddMediatR(typeof(CreateAuthor.Handler));
 
 var app = builder.Build();
 
