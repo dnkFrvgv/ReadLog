@@ -23,10 +23,11 @@ namespace api.Data
       modelBuilder.Entity<Read>().HasOne(b => b.Review).WithOne(r => r.Read).HasForeignKey<Review>(r => r.ReadId);
     }
 
-    DbSet<BookAuthor> BookAuthors;
-    DbSet<Author> Authors;
-    DbSet<Book> Books;
-    DbSet<Log> Logs;
-    DbSet<Review> Reviews;
+    public DbSet<BookAuthor> BookAuthors;
+    public DbSet<Author> Authors;
+    public DbSet<Book> Books;
+    public DbSet<Read> Reads;
+    public DbSet<Log> Logs;
+    public DbSet<Review> Reviews;
   }
 }
